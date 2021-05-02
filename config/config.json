@@ -1,0 +1,19 @@
+{
+  "development": {
+    "url": "postgres://solaiqrh:ig-z06icgGVu0HA0sK7C8PXbrpz-r3cw@hattie.db.elephantsql.com:5432/solaiqrh"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
