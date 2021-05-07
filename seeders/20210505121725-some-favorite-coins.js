@@ -5,25 +5,25 @@ module.exports = {
     await queryInterface.bulkInsert("favoriteCoins", [
       {
         userId: 1,
-        favoriteCoinId: 1,
+        coinId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userId: 1,
-        favoriteCoinId: 2,
+        coinId: 2,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userId: 2,
-        favoriteCoinId: 1,
+        coinId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userId: 2,
-        favoriteCoinId: 3,
+        coinId: 3,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
