@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       //coin.hasMany(models.favoriteCoin);
       coin.belongsToMany(models.user, {
         through: "favoriteCoins",
-        foreignKey: "favoriteCoinId",
+        foreignKey: "coinId",
       });
     }
   }

@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn("favoriteCoins", "favoriteCoinId", {
+    await queryInterface.addColumn("favoriteCoins", "coinId", {
       type: Sequelize.INTEGER,
       references: {
         model: "coins",
@@ -14,6 +14,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.removeColumn("favoriteCoins", "favoriteCoinId");
+    await queryInterface.removeColumn("favoriteCoins", "coinId");
   },
 };

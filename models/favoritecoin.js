@@ -10,14 +10,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       favoriteCoin.belongsTo(models.user);
       favoriteCoin.belongsTo(models.coin, {
-        foreignKey: "favoriteCoinId",
+        foreignKey: "coinId",
       });
     }
   }
   favoriteCoin.init(
     {
       userId: { type: DataTypes.INTEGER },
-      favoriteCoinId: { type: DataTypes.INTEGER },
+      coinId: { type: DataTypes.INTEGER },
     },
     {
       sequelize,
