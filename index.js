@@ -4,6 +4,7 @@ const corsMiddleWare = require("cors");
 const authMiddleware = require("./auth/middleware");
 const authRouter = require("./routers/auth");
 const userRouter = require("./routers/userRouter");
+const adminRouter = require("./routers/adminRouter");
 const PORT = 4000;
 const app = express();
 
@@ -98,6 +99,7 @@ if (process.env.DELAY) {
 
 app.use("/", authRouter);
 app.use("/", userRouter);
+app.use("/", adminRouter);
 // Listen for connections on specified port (default is port 4000)
 
 app.listen(PORT, () => {
