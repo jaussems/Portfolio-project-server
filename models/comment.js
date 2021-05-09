@@ -8,13 +8,25 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      comment.belongsTo(models.user);
+      comment.belongsTo(models.coin, {
+        foreignKey: "coinId",
+      });
     }
   }
   comment.init(
     {
       name: DataTypes.STRING,
       content: { type: DataTypes.STRING, allowNull: false },
+      userId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
     },
     {
       sequelize,

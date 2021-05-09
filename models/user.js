@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         through: "favoriteCoins",
         foreignKey: "userId",
       });
+      user.hasMany(models.comment, {
+        foreignKey: "userId",
+      });
     }
   }
   user.init(
