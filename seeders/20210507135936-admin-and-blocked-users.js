@@ -10,7 +10,7 @@ module.exports = {
         email: "block@block.com",
         password: bcrypt.hashSync("block123", SALT_ROUNDS),
         isAdmin: false,
-        isBlocked: false,
+        isBlocked: true,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

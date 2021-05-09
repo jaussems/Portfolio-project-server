@@ -6,7 +6,7 @@ const router = new Router();
 router.get("/admin/user", async (req, res) => {
   try {
     const allusers = await User.findAll({
-      attributes: ["email", "firstName"],
+      attributes: ["email", "firstName", "isBlocked"],
     });
     res.status(201).send(allusers);
   } catch (e) {
