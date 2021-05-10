@@ -39,11 +39,16 @@ router.post("/coins/:userId/:stringCoinId", async (req, res) => {
         coinId: checkCoin.id,
       });
       console.log(`Updated the comments!`);
-      //return updatedcomment;
-
+      const findcoin = await coin.findAll({
+        where: { stringCoinId: stringcoin },
+        include: [{ model: comment }],
+      });
+      const found = findcoin.map((list) => list.toJSON());
+      const foundcomments = found.map((usercomments) => usercomments.comments);
+      const all_comments = foundcomments.reduce((comment) => comment);
       return res
         .status(201)
-        .send({ message: "Updated comments", updatedcomment });
+        .send({ message: "Updated comments", updatedcomment, all_comments });
     }
     // return res
     //   .status(201)
@@ -70,9 +75,21 @@ router.delete("/coins/:userId/:stringCoinId", async (req, res) => {
         where: { userId: userID, coinId: checkCoin.id },
       });
 
+      const findcoin = await coin.findAll({
+        where: { stringCoinId: stringcoin },
+        include: [{ model: comment }],
+      });
+      const found = findcoin.map((list) => list.toJSON());
+      const foundcomments = found.map((usercomments) => usercomments.comments);
+      const all_comments = foundcomments.reduce((comment) => comment);
+
       return res
         .status(201)
-        .send({ message: "Succesfully deleted the comment", deletedComment });
+        .send({
+          message: "Succesfully deleted the comment",
+          deletedComment,
+          all_comments,
+        });
     }
   } catch (e) {
     console.log("ERROR MESSAGE", e.message);

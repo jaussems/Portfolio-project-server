@@ -52,6 +52,12 @@ async function GetCoinComments() {
   //       listofcomments.get({ plain: true })
   //     );
   //   }
+  //   const findcoin = await coin.findAll({
+  //     where: { stringCoinId: "chainlink" },
+  //     include: [{ model: comment }],
+  //   });
+  //   return findcoin.map((list) => list.toJSON());
+
   const findcoin = await coin.findAll({
     where: { stringCoinId: "chainlink" },
     include: [{ model: comment }],
