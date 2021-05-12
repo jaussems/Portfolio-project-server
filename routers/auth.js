@@ -19,17 +19,17 @@ router.post("/login", async (req, res, next) => {
 
     const user = await User.findOne({ where: { email } });
 
-    if (
-      !user ||
-      !bcrypt.compareSync(
-        password,
-        user.password || !user.accountBlocked === true
-      )
-    ) {
+    if (!user || !bcrypt.compareSync(password, user.password)) {
       return res.status(400).send({
         message:
           "User with that email not found or password incorrect, or you are blocked",
       });
+    }
+
+    if (user.isBlocked) {
+      return res
+        .status(401)
+        .send({ message: "User has no acces to the site, is blocked" });
     }
 
     delete user.dataValues["password"]; // don't send back the password hash

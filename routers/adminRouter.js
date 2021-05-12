@@ -1,9 +1,10 @@
 const { Router } = require("express");
 const User = require("../models/").user;
-
+const isAdminCheck = require("../middlewares/adminCheck");
 const router = new Router();
 
-router.get("/admin/user", async (req, res) => {
+router.get("/user", isAdminCheck, async (req, res) => {
+  console.log(req.headers);
   try {
     const allusers = await User.findAll({
       attributes: ["id", "email", "firstName", "isBlocked"],
@@ -17,15 +18,11 @@ router.get("/admin/user", async (req, res) => {
   }
 });
 
-router.put("/admin/user/:userId", async (req, res) => {
+router.put("/user/:userId", isAdminCheck, async (req, res) => {
   const userID = req.params.userId;
-  //const blocked = req.body.blocked;
+  console.log(req.headers);
 
   try {
-    // const updatedUser = await User.update(
-    //   { isBlocked: Boolean(req.body.IsBlocked) },
-    //   { where: { id: req.params.userId } }
-    // );
     const user = await User.findByPk(userID);
 
     const userBlocked = await user.update({ isBlocked: !user.isBlocked });
