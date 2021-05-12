@@ -2,6 +2,7 @@ const express = require("express");
 const loggerMiddleWare = require("morgan");
 const corsMiddleWare = require("cors");
 const authMiddleware = require("./auth/middleware");
+const admin = require("./middlewares/adminCheck");
 const authRouter = require("./routers/auth");
 const userRouter = require("./routers/userRouter");
 const adminRouter = require("./routers/adminRouter");
@@ -99,8 +100,9 @@ if (process.env.DELAY) {
  * */
 
 app.use("/", authRouter);
-app.use("/", userRouter);
-app.use("/", adminRouter);
+
+app.use("/user", userRouter);
+app.use("/admin", adminRouter);
 app.use("/", commentRouter);
 // Listen for connections on specified port (default is port 4000)
 
