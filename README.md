@@ -55,7 +55,7 @@ See Coin is a platform where users can see different crypto currencies, add them
 
 - See a list of all my users, including firstname and email
 - As a Admin I want to be able to block users, so they cannot log in
-- 
+
 
 ---
 ### Database
