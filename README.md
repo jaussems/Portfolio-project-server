@@ -21,7 +21,7 @@ See Coin is a platform where users can see different crypto currencies, add them
 <a href="https://www.w3.org/TR/CSS/#css"><img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS 3"/></a>&nbsp;
 <a href="https://reactjs.org/"><img src="https://img.icons8.com/officel/40/000000/react.png" alt="React"/></a>&nbsp;
 <a href="https://redux.js.org/"><img src="https://img.icons8.com/color/48/000000/redux.png" alt="Redux"/></a>&nbsp;
-<a href="https://material-ui.com/"><img src="https://img.icons8.com/color/48/000000/material-ui.png" alt="Material UI"/></a>
+
 
 ### Backend:
 
