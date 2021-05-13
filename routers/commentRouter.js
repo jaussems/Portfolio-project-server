@@ -33,6 +33,14 @@ router.post(
     const checkCoin = await coin.findOne({
       where: { stringCoinId: stringcoin },
     });
+    if (!name && !content) {
+      return res.status(400).send("Please provide an name and content");
+    }
+    if (!coinName && !coinImage) {
+      return res
+        .status(400)
+        .send("Please provide the designated queries, coinName and coinImage");
+    }
 
     if (!checkCoin) {
       const coinCreated = await coin.create({
@@ -85,9 +93,6 @@ router.post(
           .status(201)
           .send({ message: "Updated comments", updatedcomment, all_comments });
       }
-      // return res
-      //   .status(201)
-      //   .send({ message: "Updated comments", updatedcomment });
     } catch (e) {
       console.log("ERROR MESSAGE", e.message);
       return res.status(404).send({ message: "Comment was not made" });
@@ -95,40 +100,46 @@ router.post(
   }
 );
 
-router.delete("/coins/:userId/:stringCoinId", async (req, res) => {
-  const userID = req.params.userId;
-  const stringcoin = req.params.stringCoinId;
-  if (!stringcoin && !userId) {
-    return res.status(400).send("Please provide an coin Id and/or a userId");
-  }
-
-  try {
-    const checkCoin = await coin.findOne({
-      where: { stringCoinId: stringcoin },
-    });
-    if (checkCoin) {
-      const deletedComment = await comment.destroy({
-        where: { userId: userID, coinId: checkCoin.id },
-      });
-
-      const findcoin = await coin.findAll({
-        where: { stringCoinId: stringcoin },
-        include: [{ model: comment }],
-      });
-      const found = findcoin.map((list) => list.toJSON());
-      const foundcomments = found.map((usercomments) => usercomments.comments);
-      const all_comments = foundcomments.reduce((comment) => comment);
-
-      return res.status(201).send({
-        message: "Succesfully deleted the comment",
-        deletedComment,
-        all_comments,
-      });
+router.delete(
+  "/coins/:userId/:stringCoinId",
+  authMiddleware,
+  async (req, res) => {
+    const userID = req.params.userId;
+    const stringcoin = req.params.stringCoinId;
+    if (!stringcoin && !userId) {
+      return res.status(400).send("Please provide an coin Id and/or a userId");
     }
-  } catch (e) {
-    console.log("ERROR MESSAGE", e.message);
-    return res.status(404).send({ message: "Comment was not deleted" });
+
+    try {
+      const checkCoin = await coin.findOne({
+        where: { stringCoinId: stringcoin },
+      });
+      if (checkCoin) {
+        const deletedComment = await comment.destroy({
+          where: { userId: userID, coinId: checkCoin.id },
+        });
+
+        const findcoin = await coin.findAll({
+          where: { stringCoinId: stringcoin },
+          include: [{ model: comment }],
+        });
+        const found = findcoin.map((list) => list.toJSON());
+        const foundcomments = found.map(
+          (usercomments) => usercomments.comments
+        );
+        const all_comments = foundcomments.reduce((comment) => comment);
+
+        return res.status(201).send({
+          message: "Succesfully deleted the comment",
+          deletedComment,
+          all_comments,
+        });
+      }
+    } catch (e) {
+      console.log("ERROR MESSAGE", e.message);
+      return res.status(404).send({ message: "Comment was not deleted" });
+    }
   }
-});
+);
 
 module.exports = router;
