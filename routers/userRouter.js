@@ -31,7 +31,7 @@ router.post("/favorites/:usersId/coin/", authMiddleware, async (req, res) => {
     return res
       .status(400)
       .send(
-        "Please provide an coin name, stringCoinId and a imageUrl, or a valid user Id"
+        "Please provide an coin name, stringCoinId and a imageUrl, or a valid userId"
       );
   }
   const id = req.params.usersId;
@@ -77,7 +77,7 @@ router.post("/favorites/:usersId/coin/", authMiddleware, async (req, res) => {
   }
 });
 
-router.delete(`/favorites/:usersId/coin/`, async (req, res) => {
+router.delete(`/favorites/:usersId/coin/`, authMiddleware, async (req, res) => {
   const id = req.params.usersId;
 
   const { stringCoinId } = req.query;
@@ -92,12 +92,14 @@ router.delete(`/favorites/:usersId/coin/`, async (req, res) => {
   try {
     const deleteUserFavorite = Favoritecoins.destroy({
       where: { userId: id, coinId: checkCoin.id },
+      attributes: ["name", "stringCoinId", "imageUrl"],
     });
 
+    console.log(`ALL USER COINS`, deleteUserFavorite);
     return res.status(201).send({
       message: "Succesfully deleted the following user favorite",
-      
-      deletedcoin: checkCoin,
+
+      deletedcoin: deleteUserFavorite,
       deleted: {
         userid: id,
         coinid: checkCoin.id,

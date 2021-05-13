@@ -8,7 +8,7 @@ module.exports = {
         firstName: "block",
         lastName: "blocked",
         email: "block@block.com",
-        password: bcrypt.hashSync("block123", SALT_ROUNDS),
+        password: bcrypt.hashSync("block", SALT_ROUNDS),
         isAdmin: false,
         isBlocked: true,
         createdAt: new Date(),
