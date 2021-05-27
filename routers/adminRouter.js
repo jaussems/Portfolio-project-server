@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const User = require("../models/").user;
+const Comments = require("../models").comment;
 const isAdminCheck = require("../middlewares/adminCheck");
 const router = new Router();
 
@@ -8,6 +9,7 @@ router.get("/user", isAdminCheck, async (req, res) => {
   try {
     const allusers = await User.findAll({
       attributes: ["id", "email", "firstName", "isBlocked"],
+      include: { model: Comments },
     });
     res.status(201).send(allusers);
   } catch (e) {

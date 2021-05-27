@@ -1,14 +1,17 @@
 const express = require("express");
 const loggerMiddleWare = require("morgan");
-const corsMiddleWare = require("cors");
+
 const authMiddleware = require("./auth/middleware");
 const admin = require("./middlewares/adminCheck");
 const authRouter = require("./routers/auth");
 const userRouter = require("./routers/userRouter");
 const adminRouter = require("./routers/adminRouter");
 const commentRouter = require("./routers/commentRouter");
+const cors = require("cors");
 const PORT = 4000;
 const app = express();
+
+app.use(cors());
 
 /**
  * morgan:
@@ -59,8 +62,6 @@ app.use(bodyParserMiddleWare);
  * docs: https://expressjs.com/en/resources/middleware/cors.html
  *
  */
-
-app.use(corsMiddleWare());
 
 /**
  *
