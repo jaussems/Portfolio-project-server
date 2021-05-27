@@ -1,6 +1,6 @@
 {
   "development": {
-    "url": "postgres://solaiqrh:ig-z06icgGVu0HA0sK7C8PXbrpz-r3cw@hattie.db.elephantsql.com:5432/solaiqrh"
+    "url": "postgres://jxexxwgincegke:2af0e558b55752fcdaead69ded6e840bfaa691758e3e676fb045c555616ac2ea@ec2-54-220-195-236.eu-west-1.compute.amazonaws.com:5432/d2i81iu6a2esv9"
   },
   "test": {
     "username": "root",
