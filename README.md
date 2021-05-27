@@ -26,7 +26,7 @@ See Coin is a platform where users can see different crypto currencies, add them
 ### Backend:
 
 <a href="https://nodejs.dev/"><img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="node JS"/></a>
-<a href="https://expressjs.com/"><img src="https://i.ibb.co/QCxVyFH/express-3-1.png" alt="Express"/></a>&nbsp;
+<a href="https://expressjs.com/"><img src="https://i.ibb.co/QCxVyFH/express-3-1.png" width=48 height=48 alt="Express"/></a>&nbsp;
 <a href="https://jwt.io/"><img src="https://jwt.io/img/pic_logo.svg" width=48 height=48 alt="JWT"></a>&nbsp;
 <a href="https://www.postgresql.org/"><img src="https://img.icons8.com/color/48/000000/postgreesql.png" alt="PostgreSQL"/></a>&nbsp;
 <a href="https://sequelize.org/"><img src="https://i.ibb.co/LQtSfMw/seq-1.png" alt="Sequelize ORM"/></a>
