@@ -8,7 +8,7 @@ See Coin is a platform where users can see different crypto currencies, add them
 
 ## App demo
 
-`Uploading images soon!`
+![ website gif](website.gif) 
 
 ---
 
