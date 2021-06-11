@@ -8,7 +8,7 @@ const userRouter = require("./routers/userRouter");
 const adminRouter = require("./routers/adminRouter");
 const commentRouter = require("./routers/commentRouter");
 const cors = require("cors");
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 app.use(cors());
